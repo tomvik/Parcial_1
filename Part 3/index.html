@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" type ="text/css" href="style.css">
 
-
 <script>
 
 let nombres  = ['Jorge','Isabel','Juan','Pedro','Karina','Jose','Arturo','Rogelio','Bertha'];
@@ -27,7 +26,24 @@ Crea una funcion llamada: challenge1  que realice lo siguiente:
 */
 
 // CREA TU FUNCION challenge1 aqui:
-
+function challenge1() {
+    const nombres_lenght = nombres.length;
+    let number_of_buttons = prompt("How many buttons do you want from 1 to " + nombres_lenght);
+    if(isNaN(number_of_buttons)) {
+        alert("You did not enter a number, try again.");
+    } else if(number_of_buttons < 0) {
+        alert("You cannot enter negative numbers");
+    } else if (number_of_buttons > nombres_lenght) {
+        alert("That's out of range");
+    } else {
+        var parent_div = document.getElementById("dummy");
+        for(let i = 0; i < number_of_buttons; i++) {
+            var btn = document.createElement("BUTTON");
+            btn.innerHTML = nombres[i];
+            parent_div.appendChild(btn);
+        }
+    }
+}
 
 
 /*
@@ -35,7 +51,12 @@ Crea una funcion llamada: challenge2 que utilizando un FOR convierta todos los n
 */
 
 // CREA TU FUNCION challenge2 2 aquí.
-
+function challenge2() {
+    alert("Check the console to see the result");
+    for(let i = 0; i < nombres.length; i++) {
+        console.log(nombres[i].toUpperCase());
+    }
+}
 
 
 /*
@@ -68,9 +89,33 @@ Deberia escribir en consola
 */
 
 // CREA TU FUNCION printInfo() AQUI
+class Dog {
+    constructor(nombre, color, raza) {
+        this.nombre = nombre;
+        this.color = color;
+        this.raza = raza;
+    }
 
+    printInfo() {
+        console.log("Nombre: " + this.nombre + ", De color: " + this.color + ", Raza: " + this.raza);
+    }
+}
 
+function challenge3() {
+    let ok = confirm("If you want to print print the info of three dogs to the console, click ok");
 
+    if(ok) {
+        let dunkel = new Dog("Dunkel", "black", "Labrador");
+        let pip = new Dog("Pip", "white", "Unknown");
+        let toni = new Dog("Toni", "brown", "Chihuahua");
+
+        dunkel.printInfo();
+        pip.printInfo();
+        toni.printInfo();
+    } else {
+        alert("Boring, no dogs for you.");
+    }
+}
 
 </script>
 
@@ -80,7 +125,7 @@ Deberia escribir en consola
 
     <button onclick="challenge1()">Challenge 1</button>
     <button onclick="challenge2()">Challenge 2</button>
-    <button onclick="challenge3()">Challenge 2</button>
+    <button onclick="challenge3()">Challenge 3</button>
 
   
 <div id = "dummy">
